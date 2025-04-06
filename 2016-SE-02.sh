@@ -28,7 +28,7 @@ do
 
         if [ $sum -gt $1 ]; then
             echo "User $currUser exceeded max RSS"
-            kill -TERM $maxPid  # махни коментара, ако искаш да се изпълни наистина
+            kill -TERM $maxPid
         fi
 
         currUser=$uid
