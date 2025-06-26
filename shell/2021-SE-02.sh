@@ -10,7 +10,7 @@ fi
 if [[ $(echo $soa | grep "(" | wc -l) -ne 0 ]]; then
     serial=$(cat $1 | grep -A 1 "SOA" | tail -n 1 | cut -d ";" -f1)
     else
-
+    
     serial=$(echo $soa | cut -d ' ' -f7 )
 fi
 
@@ -28,3 +28,4 @@ else
     sed -i -e "s/$serial/$newSerial/g" $1
 fi
 cat $1
+ 

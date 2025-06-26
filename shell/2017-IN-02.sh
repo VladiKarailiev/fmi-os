@@ -20,15 +20,15 @@ do
     user=$(echo $line | cut -d " " -f 1)
     (( totalCount++ ))
     timeStr=$(echo "$line" | grep -o -E "[0-9]{2}:[0-9]{2}:[0-9]{2}")
-
+    
     if [[ -n "$timeStr" ]]; then
         hours=${timeStr%%:*}
         minutes=${timeStr%:*}
         minutes=${minutes#*:}
         seconds=${timeStr##*:}
-
+        
         timeInSeconds=$((hours * 3600 + minutes * 60 + seconds))
-
+        
         if [[ "$user" == "$foo" ]]; then
             ((fooCount++))
             totalSeconds=$((totalSeconds + timeInSeconds))
@@ -51,9 +51,9 @@ printf "Avg %s: %02d:%02d:%02d\n" "$foo" "$totalHours" "$totalMinutes" "$totalSe
 count=1
 
 while read -r line;
-do
+do 
     user=$(echo $line | cut -d " " -f 1)
-
+    
     timeStr=$(echo "$line" | grep -o -E "[0-9]{2}:[0-9]{2}:[0-9]{2}")
 
     if [[ -n "$timeStr" ]]; then
@@ -63,7 +63,7 @@ do
     seconds=${timeStr##*:}
 
     timeInSeconds=$((hours * 3600 + minutes * 60 + seconds))
-
+    
     if [[ $timeInSeconds -gt $totalSeconds ]]; then
         echo "Terminate $user $timeStr"
     fi

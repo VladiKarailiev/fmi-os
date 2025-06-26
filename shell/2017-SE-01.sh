@@ -21,12 +21,12 @@ if [[ $# -ne 2 ]]; then
     exit 1
 fi
 
-for i in "$dir"/*;
-do
+for i in "$dir"/*; 
+do 
     if [[ ! -f $i ]]; then
         continue
     fi
-
+    
     count=$( find $i -links +"$2" | wc -l)
 
     if [[ $count -gt 0 ]]; then
@@ -37,7 +37,7 @@ done
 
 else
 
-    while read -r link;
+    while read -r link; 
     do
     cat $link 2>"/dev/null" >"/dev/null"
     if [[ $? -ne 0 ]]; then
@@ -46,4 +46,9 @@ else
     done < <(find $dir -type l)
 
 fi
+
+
+
+
+
 

@@ -1,8 +1,10 @@
 #!/bin/bash
 
-mkdir a
-mkdir b
-mkdir c
+
+#mkdir a
+#mkdir b
+#mkdir c
+
 
 if [[ "$#" -ne 2 ]];
 then
@@ -10,7 +12,7 @@ then
     exit 1
 fi
 
-if [[ $1 -gt $2 ]];
+if [[ $1 -gt $2 ]]; 
 then
     echo "First parameter can't be less than the second"
     exit 1
@@ -34,3 +36,5 @@ for file in *; do
         fi
         fi
 done
+
+

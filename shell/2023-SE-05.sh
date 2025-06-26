@@ -1,5 +1,4 @@
-#Nz dali raboti tochno ne moga da go testvam
-#Should pass an argument instead of using 65535
+# Should pass an argument instead of using 65535
 #!/bin/bash
 
 mems=$(mktemp)
@@ -24,22 +23,22 @@ globalCount=0
 while read -r line; do
 
 
-
+    
 
     comm=$(echo $line | awk '{print $1}')
     pss=$(echo $line | awk '{print $2}')
-
-#    echo "$comm with $pss"
+    
+#    echo "$comm with $pss"    
     if ! [[ "$pss" =~ ^[0-9]+$ ]]; then
             continue
     fi
  #   echo "alabala"
 
-
+    
     escaped_comm=$(echo "$comm" | sed 's/[][\/\.*^$]/\\&/g')
 
     if grep -q "^$escaped_comm[[:space:]]" "$mems"; then
-
+        
         currVal=$(grep "^$escaped_comm " $mems | awk '{print $NF}')
         newVal=$(( currVal + pss ))
         sed -i -e "s|^\($escaped_comm[[:space:]]*\)$currVal|\1$newVal|" $mems
@@ -63,7 +62,7 @@ while read -r line; do
 
     if [[ $val -gt $n ]]; then
         globalCount=1
-        escaped_comm=$(echo "$comm" | sed 's/[][\/\.*^$]/\\&/g')
+        escaped_comm=$(echo "$comm" | sed 's/[][\/\.*^$]/\\&/g')        
 
         if grep -q "^$escaped_comm[[:space:]]" "$results"; then
          currVal=$(grep "^$escaped_comm[[:space:]]" $results | awk '{print $NF}')
@@ -72,7 +71,7 @@ while read -r line; do
          fi
          newVal=$(( currVal + 1 ))
          sed -i -e "s|^\($escaped_comm[[:space:]]*\)$currVal|\1$newVal|" $results
-
+        
         else
             echo "$comm 1" >> $results
          fi
@@ -85,12 +84,12 @@ done < $mems
 counter=$(( counter + 1))
 sleep 1
 #globalCount=0
-done
+done 
 
 
 counter=$(( counter / 2 ))
 while read -r line; do
-
+    
     occurs=$(echo $line | awk '{print $NF}')
 
     if [[ $occurs -gt $counter ]]; then

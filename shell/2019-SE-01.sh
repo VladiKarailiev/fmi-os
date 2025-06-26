@@ -17,7 +17,7 @@ digits()
     num=$(( num / 10 ))
 
     done
-
+    
     echo $sum
 }
 
@@ -36,7 +36,7 @@ while read -r line; do
     elif [[ ! -z $negative ]]; then
         line=$(( line * -1 ))
     fi
-
+    
     if [[ $(digits $line) -gt $maxSum ]]; then
         maxSum=$(digits $line)
     fi
@@ -45,7 +45,7 @@ while read -r line; do
         max=$line
     fi
 
-    echo $(digits $line)
+    echo $(digits $line)    
 
 done
 

@@ -15,7 +15,7 @@ fi
 
 count=0
 
-while read -r link;
+while read -r link; 
 do
     if [[ -e $link ]]; then
 

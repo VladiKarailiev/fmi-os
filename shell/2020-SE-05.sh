@@ -10,12 +10,12 @@ while read -r file
 do
     i=0
     errors=$(mktemp)
-
+    
     while read -r line
     do
-
+        
         i=$(( i+1 ))
-
+        
         if [[ -z $line ]]; then
             continue
         fi
@@ -29,10 +29,10 @@ do
     if [[ $(cat $errors | wc -l) -ne 0 ]]; then
         echo "Error in $file:"
         cat $errors
-
+    
     else
         cat $file >> $config
-
+        
 
         user=$(basename "$file")
         if [[ $(echo $pwdFile | grep "^$user:\[0-9\]*\$" | wc -l ) -eq 0 ]]; then

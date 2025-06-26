@@ -1,5 +1,8 @@
 #!/bin/bash
 
+base="base.csv"
+prefix="prefix.csv"
+
 if [[ $# -ne 3 ]]; then
     echo "Expected 3 args"
     exit 1
@@ -31,3 +34,5 @@ fi
 
 num=$(echo "$num * $mult" | bc)
 echo "$num $3 ($measure, $unit)"
+
+

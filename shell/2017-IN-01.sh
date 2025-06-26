@@ -21,3 +21,4 @@ for i in $value2; do
 done
 
 sed -E "s/$s2.*\$/$s2$value3/g" < $file
+

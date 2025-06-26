@@ -32,9 +32,9 @@ do
     echo -n "$host "
     echo -n "HTTP/2.0: $two "
     echo -n "non-HTTP2: $(( nontwo - two )) "
-    echo ""
+    echo ""    
     while read -r req; do
-
+        
         ip=$(echo $req | cut -d ' ' -f1)
         count=0
         clientStatuses=$(mktemp)
@@ -47,7 +47,7 @@ do
             fi
         done < $clientStatuses
         if [[ $(grep $ip $clients | wc -l) -eq 0 ]]; then
-            echo "$count $ip" >> $clients
+            echo "$count $ip" >> $clients 
         fi
     done < <(grep ".* $host .*" $file | sort | uniq)
     sort -n -r $clients | head -n 5

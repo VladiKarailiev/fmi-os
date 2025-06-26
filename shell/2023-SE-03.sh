@@ -21,7 +21,7 @@ while read -r file; do
         clean=$(echo $word |  sed -e "s/\([A-Z]\)/\L\1/g" | grep -i -o -e "\<[a-z][a-z]*’*[a-z]*\>")
         echo $clean >> $currDict
     done
-
+    
     cat $currDict >> $dict
     rm $currDict
 done < <( find $dir -type f )
@@ -55,3 +55,5 @@ done < <(cat $sorted | cut -d" " -f2 )
 
 
 rm $dict $sorted
+
+

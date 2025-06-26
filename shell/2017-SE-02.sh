@@ -15,3 +15,5 @@ elif [[ ! -z $(ls -A $dst) ]]
 fi
 
 find $1 -regex ".*${str}.*" -exec mv -i {} $dst \;
+
+

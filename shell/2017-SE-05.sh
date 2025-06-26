@@ -13,7 +13,7 @@ while read -r file
 do
     version=$(echo $file | cut -d "-" -f 2 )
     currArch=$(echo $file | cut -d "-" -f 3)
-
+    
     x=$(echo $version | cut -d "." -f 1)
     y=$(echo $version | cut -d "." -f 2)
     z=$(echo $version | cut -d "." -f 3)
@@ -36,7 +36,7 @@ do
         bestX=$x
         bestY=$y
         bestZ=$z
-    elif [[ $z -gt $bestZ ]]; then
+    elif [[ $z -gt $bestZ ]]; then        
         bestFile=$file
         bestX=$x
         bestY=$y

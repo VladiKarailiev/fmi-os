@@ -6,7 +6,7 @@ total=0
 userBestSize=0
 userBestPID=""
 
-while read -r line;
+while read -r line; 
 do
     currUid=$( echo $line | cut -d " " -f 1)
     currPss=$( echo $line | cut -d " " -f 3)
